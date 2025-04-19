@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salesflow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+      }
+      /* Fix for green shades not defined in Tailwind */
+      .bg-green-150 { background-color: #a7f3d0; }
+      .bg-green-300 { background-color: #86efac; }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    <!-- Main Container with Background -->
+    <div class="relative overflow-hidden bg-green-100">
+      <!-- Concentric Circles Background -->
+      <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+        <div class="w-[800px] h-[800px] sm:w-[1200px] sm:h-[1200px] rounded-full bg-green-100 opacity-40 absolute"></div>
+        <div class="w-[600px] h-[600px] sm:w-[900px] sm:h-[900px] rounded-full bg-green-150 opacity-40 absolute"></div>
+        <div class="w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-green-200 opacity-30 absolute"></div>
+        <div class="w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-full bg-green-300 opacity-20 absolute"></div>
+      </div>
+
+      <!-- Navigation Bar -->
+      <nav class="top-0 bg-green-100 backdrop-blur-sm z-50 px-4 sm:px-6 md:px-20">
+        <div class="mx-auto max-w-7xl flex justify-between items-center py-4">
+          <!-- Logo -->
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+              <div class="w-4 h-4 bg-white rounded-full"></div>
+            </div>
+            <span class="text-xl font-semibold">Salesflow</span>
+          </div>
+
+          <!-- Navigation Links (Desktop) -->
+          <div class="hidden lg:flex items-center gap-8">
+            <div class="flex items-center gap-6">
+              <a href="#" class="text-gray-600 hover:text-black flex items-center">
+                Product
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+              <a href="#" class="text-gray-600 hover:text-black">Pricing</a>
+              <a href="#" class="text-gray-600 hover:text-black flex items-center">
+                Company
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+              <a href="#" class="text-gray-600 hover:text-black flex items-center">
+                Resources
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+              <a href="#" class="text-gray-600 hover:text-black">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+              <a href="#" class="text-gray-600 hover:text-black">Log In</a>
+              <a href="#" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800">Try for Free</a>
+            </div>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="lg:hidden">
+            <button id="mobile-menu-button" class="text-gray-600 hover:text-black focus:outline-none">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-green-100 px-4 pb-4">
+          <div class="flex flex-col gap-4">
+            <a href="#" class="text-gray-600 hover:text-black flex items-center">
+              Product
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <a href="#" class="text-gray-600 hover:text-black">Pricing</a>
+            <a href="#" class="text-gray-600 hover:text-black flex items-center">
+              Company
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <a href="#" class="text-gray-600 hover:text-black flex items-center">
+              Resources
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <a href="#" class="text-gray-600 hover:text-black">Contact</a>
+            <a href="#" class="text-gray-600 hover:text-black">Log In</a>
+            <a href="#" class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 text-center">Try for Free</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <div class="mx-4 sm:mx-6 md:mx-20 pt-16 sm:pt-24 pb-12 relative">
+        <!-- Hero Content -->
+        <div class="text-center max-w-3xl mx-auto relative z-10">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl leading-tight font-bold mb-6 bg-gradient-to-b from-gray-900 to-gray-700 bg-clip-text text-transparent">
+            Experience the Future of<br />Sales Management
+          </h1>
+          <p class="text-gray-600 mb-8 text-base sm:text-lg max-w-2xl mx-auto">
+            Embark on a journey where innovation meets insight, and experience the future of sales management like never before.
+          </p>
+          <!-- Email Input and Button -->
+          <div class="flex flex-col sm:flex-row justify-center gap-4 mb-6">
+            <input type="email" placeholder="Enter your email" class="w-full sm:w-72 px-6 py-4 rounded-full border border-gray-200 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all shadow-sm">
+            <button class="bg-black text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all transform hover:scale-105 shadow-lg">
+              Try for Free
+            </button>
+          </div>
+          <p class="text-sm text-gray-500 flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            Powerful, yet simple. Tools for everyone. 100% free.
+          </p>
+        </div>
+        <!-- Dashboard Preview Image -->
+        <div class="mt-12 relative">
+          <div class="absolute inset-0 bg-gradient-to-t from-white to-transparent h-20 -top-20 z-10"></div>
+          <img src="https://res.cloudinary.com/dnomrmyzh/image/upload/v1745055327/Screenshot_2025-04-19_150359_vinnlj.png" alt="Sales Dashboard" class="w-full rounded-2xl shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Content Container -->
+    <div class="mx-4 sm:mx-6 md:mx-20">
+      <!-- Company Icons Section -->
+      <section class="py-8 bg-white">
+        <p class="mt-8 mb-8 uppercase flex items-center justify-center tracking-widest text-gray-700 text-[10px] font-semibold">
+          Trusted by 10k+ Businesses
+        </p>
+        <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-8 text-gray-500 text-lg sm:text-xl font-medium">
+          <div class="flex items-center gap-1">
+            <span class="font-semibold">Linked</span>
+            <span class="bg-gray-500 text-white px-1.5 pb-[1px] pt-[2px] rounded-sm text-base sm:text-lg font-bold leading-none">in</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-semibold">Microsoft</span>
+            <i class="fab fa-microsoft text-lg sm:text-xl"></i>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-carrot text-lg sm:text-xl"></i>
+            <span>instacart</span>
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="tracking-wider font-semibold text-lg sm:text-xl">ORACLE</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fas fa-chart-line text-lg sm:text-xl"></i>
+            <span>segment</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fab fa-slack text-lg sm:text-xl"></i>
+            <span>slack</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fab fa-upwork text-lg sm:text-xl"></i>
+            <span>Up</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Us Section -->
+      <div class="mt-10 mb-5">
+        <button class="bg-green-100 text-green-600 font-medium px-2 py-1 rounded-full shadow-sm tracking-[0.2em] hover:bg-green-200 transition">
+          WHY US
+        </button>
+      </div>
+      <div class="mb-20">
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-6 sm:gap-10">
+          <h1 class="text-3xl sm:text-4xl font-semibold text-black leading-tight max-w-full sm:max-w-[550px]">
+            Why Salesforce is Your Ideal Partner
+          </h1>
+          <p class="text-gray-600 text-sm sm:text-base font-normal leading-relaxed max-w-full sm:max-w-[420px] pt-2 sm:pt-6">
+            When it comes to sales management, there are plenty of options out there. Here are three compelling reasons why our Sales Management Dashboard stands out from the rest:
+          </p>
+        </div>
+      </div>
+
+      <!-- Cards Section -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Card 1 -->
+        <div class="bg-[#45DD5C] rounded-2xl p-5 h-64 sm:h-72 shadow-md text-black">
+          <div class="mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l4.553-2.276a1 1 0 00-.723-1.858L14 8V4a1 1 0 00-2 0v4L6.17 5.87A1 1 0 005 7v10a1 1 0 001.17.987L12 16v4a1 1 0 002 0v-4l3.83 1.987A1 1 0 0020 17V7a1 1 0 00-1.447-.894L14 10z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3 leading-tight">Unmatched Innovation and Versatility</h3>
+          <p class="text-xs sm:text-sm font-normal leading-relaxed text-gray-600">
+            Salesforce is a dynamic platform that constantly evolves to meet your unique needs. From real-time analytics to workflow automation, it adapts and innovates.
+          </p>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-[#E2FCE1] rounded-2xl p-5 h-64 sm:h-72 shadow-md text-black">
+          <div class="mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 20h20v-2a8 8 0 00-8-8H10a8 8 0 00-8 8v2z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3 leading-tight">Trust and Reliability</h3>
+          <p class="text-xs sm:text-sm font-normal leading-relaxed text-gray-600">
+            With a rock-solid infrastructure and top-tier security, Salesforce safeguards your data, ensuring reliability and accessibility.
+          </p>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-[#E2FCE1] rounded-2xl p-5 h-64 sm:h-72 shadow-md text-black">
+          <div class="mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a4 4 0 00-8 0v2m1 4h6m-3 4v1a2 2 0 104 0v-1a2 2 0 10-4 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3 leading-tight">A Global Community of Success</h3>
+          <p class="text-xs sm:text-sm font-normal leading-relaxed text-gray-600">
+            Join a global community of professionals with access to resources, experts, and a vast knowledge base for sales excellence.
+          </p>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <section class="bg-white py-12 sm:py-16 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-start md:gap-8 lg:gap-16">
+          <!-- Left Side Content -->
+          <div class="md:w-1/3 mb-8 md:mb-0">
+            <span class="inline-block bg-green-100 text-green-600 font-semibold text-xs px-3 py-1 rounded-full mb-4">FEATURES</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-snug">Empowering Your Sales Journey</h2>
+            <p class="text-gray-600 mb-6 text-sm sm:text-base">
+              Salesflow is packed with features designed to streamline your sales processes, empower your team, and drive revenue growth.
+            </p>
+            <a href="#" class="inline-block border border-gray-300 text-gray-800 font-medium px-6 py-3 rounded-full hover:bg-gray-100 transition">
+              Learn more about all features
+            </a>
+          </div>
+          <!-- Right Side Features Grid -->
+          <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+            <div class="flex items-start space-x-3">
+              <div class="bg-black text-white p-2.5 rounded-full flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold mb-1">Real-Time Data Insights</h4>
+                <p class="text-sm text-gray-600">Monitor key metrics and track revenue trends for informed decision-making in real-time.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="bg-black text-white p-2.5 rounded-full flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6h4V7H5v10h4z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold mb-1">Intuitive Sales Funnel</h4>
+                <p class="text-sm text-gray-600">Visualize your pipeline, identify bottlenecks, and optimize workflows with ease.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="bg-black text-white p-2.5 rounded-full flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0v-8m0 8l-8-8-4 4-6-6" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold mb-1">Social Media Integration</h4>
+                <p class="text-sm text-gray-600">Track orders from social channels and measure campaign effectiveness.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="bg-black text-white p-2.5 rounded-full flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14h6m-6 4h6m2 2H7a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold mb-1">Customizable Reports</h4>
+                <p class="text-sm text-gray-600">Create custom dashboards that showcase your most relevant metrics.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="bg-black text-white p-2.5 rounded-full flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h.01M12 12h.01M9 12h.01M4 6h16M4 6v12a2 2 0 002 2h12a2 2 0 002-2V6" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold mb-1">User-Friendly Interface</h4>
+                <p class="text-sm text-gray-600">No steep learning curve. Get started quickly and efficiently.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="bg-black text-white p-2.5 rounded-full flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-base font-semibold mb-1">Regular Updates</h4>
+                <p class="text-sm text-gray-600">Stay at the forefront with continuous improvements and updates.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Analytics Section -->
+      <section class="bg-white py-12 sm:py-16 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 sm:gap-12">
+          <!-- Image -->
+          <div class="w-full lg:w-1/2 flex justify-center">
+            <img src="https://res.cloudinary.com/dnomrmyzh/image/upload/v1745004669/Screenshot_2025-04-19_005831_uzu2nl.png" alt="Analytics UI" class="w-full max-w-[550px] rounded-2xl h-64 sm:h-80 lg:h-[400px] object-cover">
+          </div>
+          <!-- Content -->
+          <div class="w-full lg:w-1/2 space-y-6">
+            <div class="inline-block bg-[#E6F9EC] text-[#2AA644] text-xs sm:text-sm font-semibold tracking-[0.15em] px-4 py-1 rounded-full">
+              IN-DEPTH DATA INSIGHTS
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-black leading-tight">
+              Effortlessly monitor comprehensive user analytics with ease
+            </h2>
+            <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+              Our self-service data analytics software empowers you to craft captivating data visualizations and enlightening dashboards within mere minutes.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+              <div class="flex items-start gap-4">
+                <i class="fa-solid fa-table-columns text-xl sm:text-2xl text-black mt-1"></i>
+                <div>
+                  <h3 class="font-semibold text-base sm:text-lg text-black">Dynamic Dashboard</h3>
+                  <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                    Seamlessly merging numerous reports into one visually stunning interface.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <i class="fa-solid fa-rotate text-xl sm:text-2xl text-black mt-1"></i>
+                <div>
+                  <h3 class="font-semibold text-base sm:text-lg text-black">Continuous Data Sync</h3>
+                  <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                    Stay worry-free about data synchronization; our system ensures continual harmony.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Integration Section -->
+    <div class="flex flex-col lg:flex-row items-center justify-between bg-green-50 rounded-3xl p-6 sm:p-10 mx-4 sm:mx-6 md:mx-20 my-12 sm:my-20">
+      <!-- Left Section -->
+      <div class="max-w-lg text-center lg:text-left mb-8 lg:mb-0">
+        <div class="mb-4">
+          <span class="inline-block bg-green-100 text-green-600 font-semibold text-xs px-3 py-1 rounded-full">INTEGRATION</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          Connect with the tools you're already familiar with.
+        </h2>
+        <p class="text-gray-600 mb-6 text-sm sm:text-base">
+          Salesforce seamlessly integrates with the outstanding tools within your existing platform, ensuring a harmonious and productive experience.
+        </p>
+        <a href="#" class="text-green-600 font-semibold hover:underline">
+          View all integrations →
+        </a>
+      </div>
+      <!-- Right Section -->
+      <div class="relative w-full max-w-[350px] h-[350px]">
+        <!-- Background Circles -->
+        <div class="absolute inset-0">
+          <div class="absolute inset-0 bg-green-100/50 rounded-full"></div>
+          <div class="absolute inset-[12.5%] bg-green-200/50 rounded-full"></div>
+          <div class="absolute inset-[25%] bg-green-300/50 rounded-full"></div>
+        </div>
+        <!-- SVG for connection lines -->
+        <svg class="absolute inset-0 w-full h-full">
+          <line x1="175" y1="175" x2="175" y2="40" stroke="#d1d5db" stroke-width="1.5" />
+          <line x1="175" y1="175" x2="310" y2="90" stroke="#d1d5db" stroke-width="1.5" />
+          <line x1="175" y1="175" x2="310" y2="260" stroke="#d1d5db" stroke-width="1.5" />
+          <line x1="175" y1="175" x2="175" y2="310" stroke="#d1d5db" stroke-width="1.5" />
+          <line x1="175" y1="175" x2="40" y2="260" stroke="#d1d5db" stroke-width="1.5" />
+          <line x1="175" y1="175" x2="40" y2="90" stroke="#d1d5db" stroke-width="1.5" />
+        </svg>
+        <!-- Central Icon -->
+        <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+          <div class="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center shadow-lg">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+              <div class="w-6 h-6 bg-black rounded-full"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Surrounding Icons -->
+        <div class="absolute top-[35px] left-1/2 transform -translate-x-1/2">
+          <div class="bg-white p-2 rounded-xl shadow-md">
+            <img src="https://img.freepik.com/premium-vector/instagram-logo_976174-11.jpg" alt="Outlook" class="w-10 h-10">
+          </div>
+        </div>
+        <div class="absolute top-[90px] right-[15px]">
+          <div class="bg-white p-2 rounded-xl shadow-md">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Slack_Icon.png" alt="Slack" class="w-10 h-10">
+          </div>
+        </div>
+        <div class="absolute bottom-[90px] right-[15px]">
+          <div class="bg-white p-2 rounded-xl shadow-md">
+            <img src="https://cdn.worldvectorlogo.com/logos/zendesk-2.svg" alt="Zendesk" class="w-10 h-10">
+          </div>
+        </div>
+        <div class="absolute bottom-[40px] left-1/2 transform -translate-x-1/2">
+          <div class="bg-white p-2 rounded-xl shadow-md">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy_PpmNjJrPA7Vrnn4taylQUeoL0iVJxK_xg&s" alt="Mailchimp" class="w-10 h-10">
+          </div>
+        </div>
+        <div class="absolute bottom-[90px] left-[40px]">
+          <div class="bg-white p-2 rounded-xl shadow-md">
+            <img src="https://brandlogos.net/wp-content/uploads/2016/06/linkedin-logo-512x512.png" alt="Gmail" class="w-10 h-10">
+          </div>
+        </div>
+        <div class="absolute top-[90px] left-[15px]">
+          <div class="bg-white p-2 rounded-xl shadow-md">
+            <img src="https://static.vecteezy.com/system/resources/previews/006/057/998/non_2x/twitter-logo-on-transparent-background-free-vector.jpg" alt="Asana" class="w-10 h-10">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section class="py-12 sm:py-20 px-4 sm:px-6">
+      <div class="mx-auto max-w-7xl">
+        <!-- Heading -->
+        <div class="text-center mb-12">
+          <span class="inline-block bg-green-100 text-green-600 font-semibold text-xs px-3 py-1 rounded-full mb-4">TESTIMONIALS</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">What Our Clients Say</h2>
+        </div>
+        <!-- Testimonials Container -->
+        <div class="bg-green-50 p-6 sm:p-12 lg:p-20 rounded-3xl">
+          <!-- Top Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left: Cards 1, 2, 3 -->
+            <div class="col-span-1 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Card 1 -->
+              <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col justify-between h-full">
+                <p class="text-gray-700 mb-4 text-sm sm:text-base">"I've been using this product for over a year now, and it has completely transformed the way I manage my sales..."</p>
+                <div class="flex items-center">
+                  <img src="https://randomuser.me/api/portraits/women/1.jpg" class="w-10 h-10 rounded-full mr-3" />
+                  <div>
+                    <p class="font-semibold text-sm">Jane Smith</p>
+                    <p class="text-xs text-gray-500">Sales Manager at Run Corp</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col justify-between h-full">
+                <p class="text-gray-700 mb-4 text-sm sm:text-base">"Our revenue saw a significant boost after implementing this solution. It's intuitive, user-friendly..."</p>
+                <div class="flex items-center">
+                  <img src="https://randomuser.me/api/portraits/men/2.jpg" class="w-10 h-10 rounded-full mr-3" />
+                  <div>
+                    <p class="font-semibold text-sm">John Doe</p>
+                    <p class="text-xs text-gray-500">CEO of BCB Enterprises</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="col-span-1 sm:col-span-2 bg-white p-6 rounded-xl shadow-sm flex flex-col justify-between h-full">
+                <p class="text-gray-700 mb-4 text-sm sm:text-base">"I've used many sales management tools in the past, but this one is a game-changer. The unified dashboard simplifies everything..."</p>
+                <div class="flex items-center">
+                  <img src="https://randomuser.me/api/portraits/women/3.jpg" class="w-10 h-10 rounded-full mr-3" />
+                  <div>
+                    <p class="font-semibold text-sm">Sarah Johnson</p>
+                    <p class="text-xs text-gray-500">Marketing Director at LMN Inc</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Right: Card 4 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col justify-between h-full">
+              <p class="text-gray-700 mb-4 text-sm sm:text-base">"When I first considered investing in a sales management tool, I had my reservations... The flexibility it offers is what impressed me the most..."</p>
+              <div class="flex items-center mt-4">
+                <img src="https://randomuser.me/api/portraits/men/4.jpg" class="w-10 h-10 rounded-full mr-3" />
+                <div>
+                  <p class="font-semibold text-sm">Michael Brown</p>
+                  <p class="text-xs text-gray-500">Owner at PQR Solutions</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Bottom Row: Cards 5 & 6 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+            <!-- Card 5 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col justify-between">
+              <p class="text-gray-700 mb-4 text-sm sm:text-base">"I'm impressed by the continuous updates and improvements. It's clear that the team is committed to staying at the cutting edge."</p>
+              <div class="flex items-center mt-4">
+                <img src="https://randomuser.me/api/portraits/men/5.jpg" class="w-10 h-10 rounded-full mr-3" />
+                <div>
+                  <p class="font-semibold text-sm">David White</p>
+                  <p class="text-xs text-gray-500">Tech Enthusiast and Consultant</p>
+                </div>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col justify-between">
+              <p class="text-gray-700 mb-4 text-sm sm:text-base">"The detailed breakdown of report data in a table format is a dream come true for someone like me..."</p>
+              <div class="flex items-center mt-4">
+                <img src="https://randomuser.me/api/portraits/women/6.jpg" class="w-10 h-10 rounded-full mr-3" />
+                <div>
+                  <p class="font-semibold text-sm">Emily Green</p>
+                  <p class="text-xs text-gray-500">Data Analyst at Tech Solutions Inc</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="relative bg-green-50 py-20 sm:py-32 px-4 overflow-hidden mb-0">
+      <!-- Concentric Circles Background -->
+      <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+        <div class="w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-green-100 opacity-40 absolute"></div>
+        <div class="w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] rounded-full bg-green-200 opacity-30 absolute"></div>
+        <div class="w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] rounded-full bg-green-300 opacity-20 absolute"></div>
+      </div>
+      <!-- Content -->
+      <div class="relative z-10 max-w-7xl mx-auto">
+        <!-- Top Row -->
+        <div class="flex flex-col sm:flex-row justify-between items-center sm:items-start mb-12 gap-6">
+          <!-- Top Left Card -->
+          <div class="bg-white rounded-xl shadow-md p-6 w-full sm:w-64">
+            <p class="text-sm text-gray-400 mb-1">Today sessions</p>
+            <p class="text-3xl font-bold text-gray-900">400</p>
+            <p class="text-xs text-gray-500">Payout - $1k will available soon</p>
+          </div>
+          <!-- Top Center Icon -->
+          <div class="relative w-20 h-20 bg-white shadow-md rounded-xl flex items-center justify-center text-green-600 text-2xl">
+            <i class="fas fa-sync-alt"></i>
+          </div>
+          <!-- Top Right Card -->
+          <div class="bg-white rounded-xl shadow-md p-6 w-full sm:w-64">
+            <p class="text-sm text-gray-400 mb-1">Conversion Rate <span class="text-green-500">+21%</span></p>
+            <img src="https://res.cloudinary.com/dnomrmyzh/image/upload/v1745080133/Screenshot_2025-04-19_215727_eu22i9.png" alt="Conversion Rate Graph" class="w-full h-16 object-contain my-2">
+            <p class="text-xs text-gray-500">May - Sep</p>
+          </div>
+        </div>
+        <!-- Main Heading -->
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Ready to Elevate Your Sales Strategy?<br />Get Started Today!
+          </h2>
+          <p class="max-w-2xl mx-auto text-gray-600 mb-6 text-sm sm:text-base">
+            Unlock the power of data-driven sales management with our cutting-edge solution. Join a community of successful businesses and experience the future of sales management.
+          </p>
+          <a href="#" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full transition">
+            Get Started Now
+          </a>
+        </div>
+        <!-- Bottom Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+          <!-- Bottom Left Card -->
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <div class="flex justify-between items-center mb-2">
+              <p class="text-sm text-gray-500">Sales Funnel</p>
+              <span class="text-xs text-gray-500">Monthly</span>
+            </div>
+            <img src="https://res.cloudinary.com/dnomrmyzh/image/upload/v1745080133/Screenshot_2025-04-19_215617_ebvu3x.png" alt="Sales Funnel Graph" class="w-full h-40 sm:h-[180px] object-contain">
+          </div>
+          <!-- Bottom Right Card -->
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <div class="flex justify-between items-center mb-2">
+              <p class="text-sm text-gray-500">Orders</p>
+              <span class="text-xs text-gray-500">Monthly</span>
+            </div>
+            <img src="https://res.cloudinary.com/dnomrmyzh/image/upload/v1745080134/Screenshot_2025-04-19_215647_cwurqo.png" alt="Orders Graph" class="w-full h-40 sm:h-[180px] object-contain">
+          </div>
+        </div>
+        <!-- Floating Revenue Card -->
+        <div class="mt-6 sm:absolute sm:right-4 sm:top-1/2 sm:transform sm:-translate-y-1/2">
+          <div class="bg-white rounded-xl shadow-md p-6 w-full sm:w-60">
+            <p class="text-sm text-gray-400 mb-1">Today Revenue</p>
+            <p class="text-3xl font-bold">$6.4K</p>
+            <p class="text-xs text-gray-500">+$1.5k will available soon</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white px-4 sm:px-8 py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto">
+        <!-- Logo -->
+        <div class="mb-8">
+          <div class="flex items-center gap-3 text-white text-xl sm:text-2xl font-semibold">
+            <i class="fas fa-bolt text-green-500"></i>
+            Salesflow
+          </div>
+        </div>
+        <!-- Footer Links -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
+          <!-- Company -->
+          <div>
+            <h4 class="text-green-500 font-medium mb-2">Company</h4>
+            <ul class="space-y-1 text-sm">
+              <li><a href="#" class="hover:underline">About</a></li>
+              <li><a href="#" class="hover:underline">Pricing</a></li>
+              <li><a href="#" class="hover:underline">Career</a></li>
+              <li><a href="#" class="hover:underline">Contact</a></li>
+              <li><a href="#" class="hover:underline">Newsroom</a></li>
+            </ul>
+          </div>
+          <!-- Product -->
+          <div>
+            <h4 class="text-green-500 font-medium mb-2">Product</h4>
+            <ul class="space-y-1 text-sm">
+              <li><a href="#" class="hover:underline">Sales Management</a></li>
+              <li><a href="#" class="hover:underline">Features</a></li>
+              <li><a href="#" class="hover:underline">Marketplace</a></li>
+              <li><a href="#" class="hover:underline">Product Updates</a></li>
+              <li><a href="#" class="hover:underline">Blog</a></li>
+            </ul>
+          </div>
+          <!-- Resources -->
+          <div>
+            <h4 class="text-green-500 font-medium mb-2">Resources</h4>
+            <ul class="space-y-1 text-sm">
+              <li><a href="#" class="hover:underline">Blog</a></li>
+              <li><a href="#" class="hover:underline">Customer Stories</a></li>
+              <li><a href="#" class="hover:underline">Product Support</a></li>
+              <li><a href="#" class="hover:underline">Help Center</a></li>
+              <li><a href="#" class="hover:underline">Security</a></li>
+            </ul>
+          </div>
+          <!-- Discover -->
+          <div>
+            <h4 class="text-green-500 font-medium mb-2">Discover</h4>
+            <ul class="space-y-1 text-sm">
+              <li><a href="#" class="hover:underline">What is Salesforce</a></li>
+              <li><a href="#" class="hover:underline">What is CRM?</a></li>
+              <li><a href="#" class="hover:underline">CRM Software Guide</a></li>
+              <li><a href="#" class="hover:underline">Join our research panel</a></li>
+            </ul>
+          </div>
+          <!-- Newsletter -->
+          <div class="col-span-2 sm:col-span-1">
+            <h4 class="text-white font-medium mb-2">Subscribe to our newsletter</h4>
+            <div class="flex items-center mb-3 h-10 bg-white rounded-full">
+              <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded-l-full focus:outline-none text-black text-xs sm:text-sm" />
+              <button class="bg-green-500 hover:bg-green-600 text-white px-3 text-xs sm:text-sm py-1 rounded-full m-1 shadow-lg">Subscribe</button>
+            </div>
+            <p class="text-xs text-gray-400">
+              Informative insights and practical knowledge to align your sales team effectively. No jargon, no clutter.
+            </p>
+            <div class="flex gap-4 text-lg sm:text-xl mt-4 text-white">
+              <i class="fab fa-linkedin-in"></i>
+              <i class="fab fa-facebook"></i>
+              <i class="fab fa-x-twitter"></i>
+              <i class="fab fa-instagram"></i>
+            </div>
+          </div>
+        </div>
+        <!-- Footer Bottom -->
+        <div class="border-t border-gray-800 mt-8 sm:mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-400">
+          <div class="flex gap-4 mb-4 sm:mb-0">
+            <a href="#" class="hover:underline">Terms & Conditions</a>
+            <a href="#" class="hover:underline">Privacy Policy</a>
+          </div>
+          <p>© 2023 Salesforce. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+</body>
+</html>
